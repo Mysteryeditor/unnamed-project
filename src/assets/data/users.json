@@ -8,42 +8,6 @@
       "role": "admin",
       "isLogged": false,
       "id": 1
-    },
-    {
-      "firstName": "Ram",
-      "lastName": "Kumar",
-      "email": "rama@gmail.com",
-      "password": "Ramarama123@",
-      "role": "admin",
-      "isLogged": false,
-      "id": 2
-    },
-    {
-      "firstName": "",
-      "lastName": "",
-      "email": "",
-      "password": "",
-      "role": "user",
-      "isLogged": false,
-      "id": 3
-    },
-    {
-      "firstName": "dsfvg",
-      "lastName": "sdfv",
-      "email": "dghb@1",
-      "password": "dfhdxbQ#$FGGGdfgsdf43",
-      "role": "user",
-      "isLogged": false,
-      "id": 4
-    },
-    {
-      "firstName": "bgdbg",
-      "lastName": "dfbdfbb",
-      "email": "dfgbd@gdfgb",
-      "password": "dfbdgs@1212Gdf",
-      "role": "admin",
-      "isLogged": false,
-      "id": 5
     }
   ]
 }

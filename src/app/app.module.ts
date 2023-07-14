@@ -14,6 +14,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import {CardModule} from 'primeng/card';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { TasksComponent } from './tasks/tasks.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { HttpClientModule } from '@angular/common/http';
     SignupComponent,
     SigninComponent,
     NavbarComponent,
+    TasksComponent,
   ],
   imports: [
     BrowserModule,
