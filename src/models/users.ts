@@ -5,5 +5,9 @@ export interface usersData{
     password:string;
     role:string;
     isLogged:boolean;
+}
 
+export interface sessionData{
+    email:string;
+    role:string;
 }

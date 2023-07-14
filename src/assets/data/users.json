@@ -9,5 +9,12 @@
       "isLogged": false,
       "id": 1
     }
+  ],
+  "session": [
+    {
+      "email": "kokki@gmail.com",
+      "role": "admin",
+      "id": 1
+    }
   ]
 }
