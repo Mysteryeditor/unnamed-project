@@ -5,16 +5,33 @@
       "lastName": "Pudhupettai",
       "email": "kokki@gmail.com",
       "password": "Kokki@123",
-      "role": "admin",
-      "isLogged": false,
+      "role": "user",
+      "isLogged": true,
       "id": 1
     }
   ],
   "session": [
     {
       "email": "kokki@gmail.com",
-      "role": "admin",
+      "role": "user",
+      "userId": 1,
       "id": 1
+    }
+  ],
+  "tasks": [
+    {
+      "userid": 1,
+      "title": "Cleaning",
+      "assignedDate": "2023/07/14",
+      "dueDate": "2023/07/15",
+      "status": "pending",
+      "id": 1
+    },
+    {
+      "userid": 2,
+      "title": "Cleaning",
+      "assignedDate": "22/07/2003",
+      "id": 2
     }
   ]
 }

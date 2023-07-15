@@ -69,7 +69,8 @@ export class SignupComponent implements OnInit {
       email: '',
       password: '',
       role: '',
-      isLogged: false
+      isLogged: false,
+      id: 0
     }
 
     userAssign(){

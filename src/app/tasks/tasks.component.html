@@ -9,21 +9,24 @@
 
         <th>Due Date</th>
 
+        <th>Days Left</th>
+
         <th>Status</th>
 
         <th>Actions</th>
 
 
         <tbody>
-            <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
+            <tr *ngFor="let x of taskData">
+                <td>{{x.id}}</td>
+                <td>{{x.title}}</td>
+                <td>{{x.assignedDate|date}}</td>
+                <td>{{x.dueDate|date}}</td>
+                <td>{{getDaysLeft(x.assignedDate,x.dueDate)}}</td>
+                <td>{{x.status}}</td>
 
                 <td>
-                    <button class="btn btn-outline-danger">Remove</button>
+                    <!-- <button class="btn btn-outline-danger">Remove</button> -->
                     <button class="btn btn-outline-info ms-2">Edit</button>
                 </td>
             </tr>

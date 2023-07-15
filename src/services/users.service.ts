@@ -4,12 +4,12 @@ import { usersData } from 'src/models/users';
 import { sessionData } from 'src/models/users';
 import { environments } from 'src/environments/environments';
 import { Router } from '@angular/router';
-import { Subject } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 @Injectable({
   providedIn: 'root',
 })
 export class UsersService {
-  constructor(private http: HttpClient, private route: Router) {}
+  constructor(private http: HttpClient, private route: Router) { }
   // for the user status
   public authSubject = new Subject<boolean>();
 
@@ -18,14 +18,7 @@ export class UsersService {
     this.authSubject.next(state);
   }
 
-  // setting a value based on subject
-  status?: boolean;
-  getAuthStatus() {
-    this.authSubject.subscribe((res) => {
-      this.status = res;
-    });
-    return this.status;
-  }
+
 
   usersApi = environments.usersApi;
 
@@ -39,6 +32,14 @@ export class UsersService {
     return this.http.get<usersData[]>(this.usersApi);
   }
 
+
+  updateIsloggedIn(item: any, id: number) {
+    const putUrl = this.usersApi + '/' + id
+    item.isLogged = true
+    return this.http.put(putUrl, item).subscribe((res) => { })
+  }
+
+
   sessionApi = environments.sessionUrl;
   postSessionInfo(item: sessionData) {
     return this.http
@@ -47,4 +48,38 @@ export class UsersService {
         console.log('login successfull');
       });
   }
+
+  getSessionInfo(){
+    return this.http.get<sessionData[]>(this.sessionApi);
+  }
+
+
+
+  logout(id:number) {
+    var activeUser = this.sessionApi + '/1';
+    var logoutUser=this.usersApi+'/'+id
+    this.validateAuth(false);
+    return this.http.delete(activeUser).subscribe();
+
+  }
+
+    // getting the data of the user who is active
+    getActiveUser() {
+      const activeUrl = this.usersApi + '?isLogged=true'
+      return this.http.get<usersData>(activeUrl);
+    }
+  
+    activeUser: any//data of active user
+  
+    // to put back the updated data
+    logOutUser() {
+      this.getActiveUser().subscribe((res) => {
+        this.activeUser = res
+        const activeUrl = this.usersApi + '/' + this.activeUser[0].id;
+        this.activeUser[0].isLogged = false;
+        this.route.navigate(['/']);
+        return this.http.put(activeUrl, this.activeUser[0]).subscribe();
+  
+      })
+}
 }

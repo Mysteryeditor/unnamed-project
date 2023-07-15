@@ -19,18 +19,24 @@
         </li>
    
         <li class="nav-item">
-          <a class="nav-link" routerLink="/tasks">tasks</a>
+          <a class="nav-link" routerLink="/tasks/{{userId}}">tasks</a>
+        </li>
+
+
+
+        <li class="nav-item">
+          <a class="nav-link" *ngIf="adminOps" routerLink="/UserList">UserList</a>
         </li>
       </ul>
       <ul class="ms-auto navbar-nav ">
         <li class="nav-item">
-          <a class="nav-link" href="/signin">Sign-In</a>
+          <a class="nav-link" *ngIf="!isActive" href="/signin">Sign-In</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="/register">Register</a>
+          <a class="nav-link" *ngIf="!isActive" routerLink="/register">Register</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="/">Logout</a>
+          <a class="nav-link" *ngIf="isActive" (click)="logout()" routerLink="/">Logout</a>
         </li>
       </ul>
     </div>
