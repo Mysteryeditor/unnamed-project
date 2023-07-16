@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { TasksServiceService } from 'src/services/tasks-service.service';
 import { taskModel } from 'src/models/tasks';
-import { take } from 'rxjs';
+
 
 @Component({
   selector: 'app-tasks',
@@ -34,4 +34,10 @@ export class TasksComponent implements OnInit {
     )
   }
 
+
+  // task process
+
+  onSubmit(){
+    
+  }
 }

@@ -11,12 +11,7 @@
     }
   ],
   "session": [
-    {
-      "email": "kokki@gmail.com",
-      "role": "user",
-      "userId": 1,
-      "id": 1
-    }
+    
   ],
   "tasks": [
     {
@@ -26,12 +21,6 @@
       "dueDate": "2023/07/15",
       "status": "pending",
       "id": 1
-    },
-    {
-      "userid": 2,
-      "title": "Cleaning",
-      "assignedDate": "22/07/2003",
-      "id": 2
     }
   ]
 }
