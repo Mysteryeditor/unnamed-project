@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { TasksServiceService } from 'src/services/tasks-service.service';
-import { taskModel } from 'src/models/tasks';
 import { taskAssignment } from 'src/models/tasks';
 import { UsersService } from 'src/services/users.service';
 import { HttpClient } from '@angular/common/http';
@@ -31,7 +30,8 @@ export class TasksComponent implements OnInit {
   todayDate = '08/20/2023';
   adminOps: boolean = false
 
-  taskData!: taskModel[];
+  taskData!: taskAssignment[];
+  noTasks: boolean=false;
   constructor(private actroute: ActivatedRoute, private taskservice: TasksServiceService, private userserv: UsersService, private http: HttpClient) { }
 
   ngOnInit(): void {
@@ -49,6 +49,10 @@ export class TasksComponent implements OnInit {
     this.taskservice.getTasks(this.userId).subscribe(
       (res) => {
         this.taskData = res;
+        if(res.length<1){
+          this.noTasks=true;
+          // alert("No tasks found");
+        }
       });
 
     const d = new Date();
@@ -104,8 +108,17 @@ export class TasksComponent implements OnInit {
     )
   }
 
-  updateStatus(x:number){
-    
-
+  singleTaskData!:taskAssignment;
+  currentStatus!:string
+  updateStatus(item:taskAssignment){
+    this.singleTaskData=item;
+    this.currentStatus=this.singleTaskData.status;
   }
+
+  putTaskStatus(){
+        this.singleTaskData.status=this.currentStatus;
+    this.taskservice.putSingleTask(this.singleTaskData);
+  }
+
+  
 }
