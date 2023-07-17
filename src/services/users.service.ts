@@ -34,9 +34,9 @@ export class UsersService {
 
 
   updateIsloggedIn(item: any, id: number) {
-    const putUrl = this.usersApi + '/' + id
-    item.isLogged = true
-    return this.http.put(putUrl, item).subscribe((res) => { })
+    const putUrl = this.usersApi + '/' + id;
+    item.isLogged = true;
+    return this.http.put(putUrl, item).subscribe();  
   }
 
 
@@ -56,10 +56,11 @@ export class UsersService {
 
 
   logout(id:number) {
-    var activeUser = this.sessionApi + '/1';
-    var logoutUser=this.usersApi+'/'+id
+    var activeUserApi = this.sessionApi + '/1';
+    var logoutUser=this.usersApi+'/'+id;
+    this.getUserData()
     this.validateAuth(false);
-    return this.http.delete(activeUser).subscribe();
+    return this.http.delete(activeUserApi).subscribe();
 
   }
 
@@ -81,5 +82,10 @@ export class UsersService {
         return this.http.put(activeUrl, this.activeUser[0]).subscribe();
   
       })
+}
+
+getUserId(firstName:string){
+  const url=this.usersApi+'/?firstName='+firstName;
+  return this.http.get<usersData[]>(url);
 }
 }

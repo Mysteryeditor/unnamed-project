@@ -5,22 +5,46 @@
       "lastName": "Pudhupettai",
       "email": "kokki@gmail.com",
       "password": "Kokki@123",
+      "role": "admin",
+      "isLogged": false,
+      "id": 1
+    },
+    {
+      "firstName": "PuliMuruganRaja",
+      "lastName": "Vel",
+      "email": "ghilli@gmail.com",
+      "password": "Hello@123",
       "role": "user",
       "isLogged": true,
-      "id": 1
+      "id": 3
     }
   ],
   "session": [
-    
+    {
+      "email": "ghilli@gmail.com",
+      "role": "user",
+      "userId": 3,
+      "id": 1
+    }
   ],
   "tasks": [
     {
-      "userid": 1,
-      "title": "Cleaning",
-      "assignedDate": "2023/07/14",
-      "dueDate": "2023/07/15",
-      "status": "pending",
-      "id": 1
+      "userid": 3,
+      "title": "navbar",
+      "id": 4,
+      "assignedDate": "2023-07-12",
+      "dueDate": "2023-07-19",
+      "userName": "PuliMuruganRaja",
+      "status": "assigned"
+    },
+    {
+      "userid": 3,
+      "title": "cards",
+      "id": 5,
+      "assignedDate": "2023-07-18",
+      "dueDate": "2023-07-19",
+      "userName": "PuliMuruganRaja",
+      "status": "assigned"
     }
   ]
 }
