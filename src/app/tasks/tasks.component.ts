@@ -4,9 +4,8 @@ import { TasksServiceService } from 'src/services/tasks-service.service';
 import { taskAssignment } from 'src/models/tasks';
 import { UsersService } from 'src/services/users.service';
 import { HttpClient } from '@angular/common/http';
-import { usersData } from 'src/models/users';
-import { environments } from 'src/environments/environments';
 import Swal from 'sweetalert2';
+
 
 
 @Component({
@@ -24,14 +23,33 @@ export class TasksComponent implements OnInit {
     assignedDate: '',
     dueDate: '',
     userName: '',
-    status: 'assigned'
+    status: 'assigned',
+    assignedBy: ''
   }
   assignedDate!: string;
   todayDate = '08/20/2023';
   adminOps: boolean = false
 
   taskData!: taskAssignment[];
-  noTasks: boolean=false;
+  noTasks: boolean = false;
+  filterTerm: string = '';
+  sortingParam: string = '';
+  sortingDirection: string = '';
+  optionSelected: string = '';
+
+  onSelectingOption(event: any) {
+    this.optionSelected = event.target.value;
+    console.log(this.optionSelected);
+    if (this.optionSelected === 'uasc') {
+      (this.sortingParam = 'userName'), (this.sortingDirection = 'asc');
+    }
+
+    else if (this.optionSelected === 'udesc') {
+      (this.sortingParam = 'userName'), (this.sortingDirection = 'desc');
+    }
+
+  }
+
   constructor(private actroute: ActivatedRoute, private taskservice: TasksServiceService, private userserv: UsersService, private http: HttpClient) { }
 
   ngOnInit(): void {
@@ -40,6 +58,7 @@ export class TasksComponent implements OnInit {
       if (data.length > 0) {
         if (data[0].role === 'admin') {
           this.adminOps = true;
+          this.taskDetails.assignedBy = data[0].firstName;
         }
       }
     })
@@ -49,8 +68,8 @@ export class TasksComponent implements OnInit {
     this.taskservice.getTasks(this.userId).subscribe(
       (res) => {
         this.taskData = res;
-        if(res.length<1){
-          this.noTasks=true;
+        if (res.length < 1) {
+          this.noTasks = true;
           // alert("No tasks found");
         }
       });
@@ -108,17 +127,17 @@ export class TasksComponent implements OnInit {
     )
   }
 
-  singleTaskData!:taskAssignment;
-  currentStatus!:string
-  updateStatus(item:taskAssignment){
-    this.singleTaskData=item;
-    this.currentStatus=this.singleTaskData.status;
+  singleTaskData!: taskAssignment;
+  currentStatus!: string
+  updateStatus(item: taskAssignment) {
+    this.singleTaskData = item;
+    this.currentStatus = this.singleTaskData.status;
   }
 
-  putTaskStatus(){
-        this.singleTaskData.status=this.currentStatus;
+  putTaskStatus() {
+    this.singleTaskData.status = this.currentStatus;
     this.taskservice.putSingleTask(this.singleTaskData);
   }
 
-  
+
 }

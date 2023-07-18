@@ -10,7 +10,7 @@ export class TasksServiceService {
   constructor(private http: HttpClient) { }
 
   tasksApi = environments.tasksApi;
-  usersApi = environments.usersApi;
+
 
   getTasks(id: string | null) {
     if (id === '0') {
