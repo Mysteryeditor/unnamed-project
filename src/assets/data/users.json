@@ -6,7 +6,7 @@
       "email": "kokki@gmail.com",
       "password": "Kokki@123",
       "role": "admin",
-      "isLogged": false,
+      "isLogged": true,
       "id": 1
     },
     {
@@ -15,7 +15,7 @@
       "email": "sri027.cvb@gmail.com",
       "password": "Srikanth@123",
       "role": "user",
-      "isLogged": true,
+      "isLogged": false,
       "id": 2
     },
     {
@@ -30,24 +30,14 @@
   ],
   "session": [
     {
-      "email": "sri027.cvb@gmail.com",
-      "role": "user",
-      "userId": 2,
-      "firstName": "Srikanth",
+      "email": "kokki@gmail.com",
+      "role": "admin",
+      "userId": 1,
+      "firstName": "KokkiKumar",
       "id": 1
     }
   ],
   "tasks": [
-    {
-      "userid": 2,
-      "title": "CRUD Task",
-      "id": 1,
-      "assignedDate": "2023-07-18",
-      "dueDate": "2023-07-22",
-      "userName": "Srikanth",
-      "status": "Done",
-      "assignedBy": "pallavi"
-    },
     {
       "userid": 2,
       "title": "pending task",

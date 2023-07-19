@@ -115,7 +115,6 @@ export class TasksComponent implements OnInit {
       title: 'Delete Confirmation',
       text: 'Do You Want To Remove This Record?',
       showCancelButton: true,
-      showLoaderOnConfirm: true,
     }).then((result) => {
       if (result.isConfirmed) {
         this.taskservice.deleteTasks(taskId);
@@ -139,5 +138,10 @@ export class TasksComponent implements OnInit {
   putTaskStatus() {
     this.singleTaskData.status = this.currentStatus;
     this.taskservice.putSingleTask(this.singleTaskData);
+  }
+
+  adminEdit(item:taskAssignment){
+    console.log(item);
+
   }
 }

@@ -70,7 +70,9 @@
             | sort : [sortingParam, sortingDirection]
         "
       >
-        <td *ngIf="adminOps">{{ x.id }}</td>
+        <td *ngIf="adminOps">{{ x.id }}
+          <input type="text" value="{{x.id}}"  >
+        </td>
         <td>{{ x.title | titlecase }}</td>
         <td *ngIf="adminOps">{{ x.userName }}</td>
         <td>{{ x.assignedBy }}</td>
@@ -80,7 +82,7 @@
         <td>{{ x.status | titlecase }}</td>
 
         <td>
-          <button class="btn btn-outline-info ms-2" *ngIf="adminOps">
+          <button  (click)="adminEdit(x)" class="btn btn-outline-info ms-2" *ngIf="adminOps">
             Edit
           </button>
           <button
