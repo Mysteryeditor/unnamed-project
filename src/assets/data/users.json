@@ -45,8 +45,18 @@
       "assignedDate": "2023-07-18",
       "dueDate": "2023-07-22",
       "userName": "Srikanth",
-      "status": "pending",
+      "status": "Pending",
       "assignedBy": "pallavi"
+    },
+    {
+      "userid": 2,
+      "title": "Front End",
+      "id": 2,
+      "assignedDate": "2023-07-19",
+      "dueDate": "2023-07-23",
+      "userName": "Srikanth",
+      "status": "assigned",
+      "assignedBy": "KokkiKumar"
     }
   ]
 }
