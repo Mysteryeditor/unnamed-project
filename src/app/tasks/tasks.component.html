@@ -57,7 +57,7 @@
         <td>{{ x.assignedBy }}</td>
         <td>{{ x.assignedDate | date }}</td>
         <td>{{ x.dueDate | date }}</td>
-        <td>{{ getDaysLeft(x.assignedDate, x.dueDate) }}</td>
+        <td>{{ getDaysLeft(todayDate, x.dueDate) }}</td>
         <td>{{ x.status | titlecase }}</td>
 
         <td>
@@ -103,7 +103,8 @@
 
           <div class="form-Group mb-3">
             <label class="col-3">Assigned Date</label>
-            <input #assignedDate name="assignedDate" [(ngModel)]="taskDetails.assignedDate" type="date" />
+            <input #assignedDate name="assignedDate" readonly [(ngModel)]="taskDetails.assignedDate" type="text" />
+            <small><em><b>*Today</b></em></small>
           </div>
 
           <div class="form-Group mb-3">
@@ -181,7 +182,7 @@
           <div class="form-group"> <label>Status:</label>
             <input type="text" name="taskStatus" [(ngModel)]="taskDetails.status">
           </div> 
-          <button type="button" data-bs-dismiss="modal" (click)="adminEditPut()" class="btn btn-primary">Understood</button>
+          <button type="button" mat-raised-button color="primary" data-bs-dismiss="modal" (click)="adminEditPut()" class="btn btn-primary">Update</button>
 
         </form>
       </div>

@@ -6,7 +6,7 @@
       "email": "kokki@gmail.com",
       "password": "Kokki@123",
       "role": "admin",
-      "isLogged": true,
+      "isLogged": false,
       "id": 1
     },
     {
@@ -15,7 +15,7 @@
       "email": "sri027.cvb@gmail.com",
       "password": "Srikanth@123",
       "role": "user",
-      "isLogged": false,
+      "isLogged": true,
       "id": 2
     },
     {
@@ -30,33 +30,12 @@
   ],
   "session": [
     {
-      "email": "kokki@gmail.com",
-      "role": "admin",
-      "userId": 1,
-      "firstName": "KokkiKumar",
+      "email": "sri027.cvb@gmail.com",
+      "role": "user",
+      "userId": 2,
+      "firstName": "Srikanth",
       "id": 1
     }
   ],
-  "tasks": [
-    {
-      "userid": 2,
-      "title": "pending task",
-      "id": 1,
-      "assignedDate": "2023-07-18",
-      "dueDate": "2023-07-22",
-      "userName": "Srikanth",
-      "status": "Pending",
-      "assignedBy": "pallavi"
-    },
-    {
-      "userid": 2,
-      "title": "Front End",
-      "id": 2,
-      "assignedDate": "2023-07-19",
-      "dueDate": "2023-07-23",
-      "userName": "Srikanth",
-      "status": "assigned",
-      "assignedBy": "KokkiKumar"
-    }
-  ]
+  "tasks": []
 }

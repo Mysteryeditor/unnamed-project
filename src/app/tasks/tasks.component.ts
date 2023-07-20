@@ -25,6 +25,7 @@ export class TasksComponent implements OnInit {
     assignedBy: '',
   };
   assignedDate!: string;
+
   todayDate = '08/20/2023';
   adminOps: boolean = false;
 
@@ -67,6 +68,10 @@ export class TasksComponent implements OnInit {
           this.taskDetails.assignedBy = data[0].firstName;
         }
       }
+      this.todayDate=new Date().toLocaleDateString();
+      this.taskDetails.assignedDate=this.todayDate;
+     
+      console.log(this.todayDate)
     });
 
     this.userId = this.actroute.snapshot.paramMap.get('id');

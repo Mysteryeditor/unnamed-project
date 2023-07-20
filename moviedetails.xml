@@ -1,0 +1,26 @@
+<xs:schema attributeFormDefault="unqualified" xmlns:xs="ds" elementFormDefault="qualified">
+    <xs:element name="movieDetails">
+        <xs:element name="releaseDetails">
+         <xs:complexType>
+            <xs:sequence>
+                <xs:element name="releaseDate" type="xs:date" />
+                <xs:element name="releaseType">
+                    <xs:choice>
+                        <xs:element name="OTT" minOccurs="0" />
+                        <xs:element name="Theatre" minOccurs="0" />
+                    </xs:choice>
+                </xs:element>
+            </xs:sequence>
+
+
+            <xs:element name="cast">
+                <xs:element name="Lead-Male" type="xs:string" />
+                <xs:element name="Lead-Female" type="xs:string" />
+                <xs:element name="Director" type="xs:string" />
+                <xs:element name="Producer" type="xs:string" />
+                <xs:element name="Music-Director" type="xs:string" />
+            </xs:element>
+         </xs:complexType>
+        </xs:element>
+    </xs:element>
+</xs:schema>
