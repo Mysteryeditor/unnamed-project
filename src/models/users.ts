@@ -6,6 +6,7 @@ export interface usersData{
     role:string;
     isLogged:boolean;
     id:number;
+    completedTaskCount:number;
 }
 
 export interface sessionData{
@@ -13,4 +14,14 @@ export interface sessionData{
     role:string;
     userId:number;
     firstName:string;
+}
+
+export interface userRanking{
+    name: string,
+    userId:number,
+    id:number,
+    score: number,
+    taskCompleted:number,
+    taskPending:number,
+    taskAssigned:number
 }

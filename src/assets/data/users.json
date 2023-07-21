@@ -15,8 +15,9 @@
       "email": "sri027.cvb@gmail.com",
       "password": "Srikanth@123",
       "role": "user",
-      "isLogged": true,
-      "id": 2
+      "isLogged": false,
+      "id": 2,
+      "completedTaskCount": 0
     },
     {
       "firstName": "pallavi",
@@ -24,18 +25,49 @@
       "email": "pallavi@g",
       "password": "Pallavi@123",
       "role": "admin",
-      "isLogged": false,
+      "isLogged": true,
       "id": 3
+    },
+    {
+      "firstName": "Darshan",
+      "lastName": "Manoharan",
+      "email": "pd@gmail.com",
+      "password": "Mswb@aLhi2002",
+      "role": "user",
+      "isLogged": false,
+      "id": 4,
+      "completedTaskCount": 2
     }
   ],
   "session": [
     {
-      "email": "sri027.cvb@gmail.com",
-      "role": "user",
-      "userId": 2,
-      "firstName": "Srikanth",
+      "email": "pallavi@g",
+      "role": "admin",
+      "userId": 3,
+      "firstName": "pallavi",
       "id": 1
     }
   ],
-  "tasks": []
+  "tasks": [
+    {
+      "userid": 4,
+      "title": "CheckTaskCount",
+      "id": 1,
+      "assignedDate": "7/21/2023",
+      "dueDate": "2023-07-23",
+      "userName": "Darshan",
+      "status": "Done",
+      "assignedBy": "pallavi"
+    },
+    {
+      "userid": 4,
+      "title": "UpdateStatusCheck",
+      "id": 2,
+      "assignedDate": "7/21/2023",
+      "dueDate": "2023-07-23",
+      "userName": "Darshan",
+      "status": "Done",
+      "assignedBy": "pallavi"
+    }
+  ]
 }

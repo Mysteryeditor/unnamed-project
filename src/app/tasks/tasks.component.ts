@@ -141,8 +141,21 @@ export class TasksComponent implements OnInit {
   }
 
   putTaskStatus() {
-    this.singleTaskData.status = this.currentStatus;
-    this.taskservice.putSingleTask(this.singleTaskData);
+    
+    Swal.fire({
+      icon:'warning',
+      title:'Are You Sure?',
+      text:'If Its Done,Its Done',
+      confirmButtonText:"Yes",
+      showCancelButton:true,
+      cancelButtonText :"No",
+      }).then((result)=>{
+        if(result.isConfirmed){
+          this.singleTaskData.status = this.currentStatus;
+          this.taskservice.putSingleTask(this.singleTaskData);
+        }       
+    })
+    
   }
 
   adminEdit(item:taskAssignment){

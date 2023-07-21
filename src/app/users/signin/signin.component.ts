@@ -3,6 +3,7 @@ import { UsersService } from 'src/services/users.service';
 import { usersData } from 'src/models/users';
 import { sessionData } from 'src/models/users';
 import { Router } from '@angular/router';
+
 @Component({
   selector: 'app-signin',
   templateUrl: './signin.component.html',
@@ -35,6 +36,7 @@ this.user.getUserData().subscribe((res)=>{
       this.sessionInfo.firstName=user1.firstName;
       this.user.updateIsloggedIn(user1,user1.id)
       this.user.postSessionInfo(this.sessionInfo);
+      localStorage.setItem('token',Math.floor(Math.random()).toString());
       this.user.validateAuth(true);
       this.route.navigate(['/']);
 

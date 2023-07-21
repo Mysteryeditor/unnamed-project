@@ -1,27 +1,11 @@
-import { inject } from '@angular/core';
-import { CanActivateFn } from '@angular/router';
-import { UsersService } from 'src/services/users.service';
-import { sessionData } from 'src/models/users';
+import { CanActivateFn, Router,Route } from '@angular/router';
 
 export const routingGuardGuard: CanActivateFn = (route, state) => {
-
-  const obj=inject(UsersService);
-   
-  return true
+  const tokenLogin=localStorage.getItem('token');
+  if(tokenLogin){
+    return true;
+  }
+  alert('Login To View Tasks');
+  return false;
 };
 
-export class authenticateGuard{
-  role:string=''
-  sessData:sessionData[]=[]
-  constructor(public user:UsersService){
-    this.user.getSessionInfo().subscribe((res)=>{
-      this.sessData=res;
-      this.role=this.sessData[0].role;
-
-    })
-
-  }
-}
-
-// const userObject=inject(UsersService);
-// const srikanth1arun0=new authenticateGuard(userObject);

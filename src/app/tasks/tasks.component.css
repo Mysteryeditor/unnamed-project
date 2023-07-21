@@ -150,3 +150,8 @@
     top: 60%;
     animation-delay: -0.4s;
   }
+
+  button:disabled{
+    background-color: rgb(187, 182, 182);
+    color: gray;
+  }

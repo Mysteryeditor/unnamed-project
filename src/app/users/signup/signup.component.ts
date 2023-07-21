@@ -5,6 +5,7 @@ import { Title } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { usersData } from 'src/models/users';
 import { UsersService } from 'src/services/users.service';
+import { matchValidator } from 'src/shared/confirmpassword';
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
@@ -23,9 +24,9 @@ export class SignupComponent implements OnInit {
   modalToggle: string = 'false';
 
   obj = new admin();
- 
 
-  constructor(private user:UsersService){}
+
+  constructor(private user: UsersService) { }
 
 
   ngOnInit(): void {
@@ -41,7 +42,7 @@ export class SignupComponent implements OnInit {
     ]);
     this.email = new FormControl('', [Validators.required, Validators.email])//pattern
     this.password = new FormControl('', [Validators.required, Validators.minLength(8), Validators.pattern('^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-zd$@$!%*?&].{8,}$')]),//pattern
-      this.confirmpassword = new FormControl('', [Validators.required])
+    this.confirmpassword = new FormControl('', [Validators.required, matchValidator('password')])
     this.schenter = new FormControl('', [Validators.required]);
 
 
@@ -70,17 +71,18 @@ export class SignupComponent implements OnInit {
       password: '',
       role: '',
       isLogged: false,
-      id: 0
+      id: 0,
+      completedTaskCount:0
     }
 
-    userAssign(){
-      this.userInfo.firstName = this.firstname.value;
-      this.userInfo.lastName = this.lastname.value;
-      this.userInfo.email = this.email.value;
-      this.userInfo.role = this.schenter.value;
-      this.userInfo.password = this.password.value;
-      this.user.postUserData(this.userInfo);
-    }
+  userAssign() {
+    this.userInfo.firstName = this.firstname.value;
+    this.userInfo.lastName = this.lastname.value;
+    this.userInfo.email = this.email.value;
+    this.userInfo.role = this.schenter.value;
+    this.userInfo.password = this.password.value;
+    this.user.postUserData(this.userInfo);
+  }
 
 
   onSubmit() {
@@ -94,16 +96,16 @@ export class SignupComponent implements OnInit {
     else if (this.userInfo.role === 'user') {
       this.userAssign();
 
-      
+
     }
   }
 
-  adminVerification(){
-    if(this.obj.keyword==='ADMIN'){
-    this.userAssign();
+  adminVerification() {
+    if (this.obj.keyword === 'ADMIN') {
+      this.userAssign();
     }
 
-    else{
+    else {
       alert("You are not authorized for access")
     }
   }

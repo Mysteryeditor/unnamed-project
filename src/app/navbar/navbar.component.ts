@@ -36,8 +36,9 @@ export class NavbarComponent implements OnInit {
     })
   }
   logout() {
-    this.user.logout(this.activeUserId);
+    this.user.logout();
     this.user.logOutUser();
+    localStorage.removeItem('token');
     this.adminOps = false;
   }
 }

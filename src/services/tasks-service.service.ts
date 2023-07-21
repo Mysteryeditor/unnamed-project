@@ -1,13 +1,16 @@
 import { Injectable } from '@angular/core';
-import { taskAssignment} from 'src/models/tasks';
+import { taskAssignment } from 'src/models/tasks';
 import { HttpClient } from '@angular/common/http';
 import { environments } from 'src/environments/environments';
+import { UsersService } from './users.service';
+import Swal from 'sweetalert2';
+import { purple } from '@mui/material/colors';
 @Injectable({
   providedIn: 'root'
 })
 export class TasksServiceService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private userService: UsersService) { }
 
   tasksApi = environments.tasksApi;
 
@@ -30,26 +33,39 @@ export class TasksServiceService {
     return this.http.delete(deleteUrl).subscribe();
   }
 
-  getSingleTask(taskId:number){
-    const singleTaskUrl=this.tasksApi+'/'+taskId;
+  getSingleTask(taskId: number) {
+    const singleTaskUrl = this.tasksApi + '/' + taskId;
     return this.http.get<taskAssignment[]>(singleTaskUrl);
+  }
+
+  putSingleTask(taskDetails: taskAssignment) {
+    const putSingleTaskUrl = this.tasksApi + '/' + taskDetails.id;
+    //incrementing the taskcount 
+    if (taskDetails.status.toLowerCase() === 'done') {
+      this.userService.getUserId(taskDetails.userName).subscribe((res) => {
+        console.log(res[0].completedTaskCount);
+        res[0].completedTaskCount = res[0].completedTaskCount + 1;
+        console.log(res[0].completedTaskCount);
+        this.userService.putTaskCount(res[0], res[0].id);
+      });
+    }
+    return this.http.put(putSingleTaskUrl, taskDetails).subscribe(() => {
+      const Toast = Swal.mixin({
+        toast: true,
+        position: 'top',
+        timer: 3000,
+        title: 'Updated SuccessFully',
+        showConfirmButton: false,
+        color: 'purple',
+        background: 'white'
+      });
+      Toast.fire();
+    });
 
   }
 
-  putSingleTask(taskDetails:taskAssignment){
-    const putSingleTaskUrl=this.tasksApi+'/'+taskDetails.id;
-    return this.http.put(putSingleTaskUrl,taskDetails).subscribe();
-
+  putAdminUpdate(item: taskAssignment, id: number) {
+    const putSingleTaskUrl = this.tasksApi + '/' + id;
+    return this.http.put(putSingleTaskUrl, item).subscribe();
   }
-
-  putAdminUpdate(item:taskAssignment,id:number){
-    const putSingleTaskUrl=this.tasksApi+'/'+id;
-console.log(item,id);
-return this.http.put(putSingleTaskUrl,item).subscribe((res)=>{
-  
-});
-
-  }
-
-
 }

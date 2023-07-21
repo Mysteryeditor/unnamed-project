@@ -68,7 +68,7 @@
           <button (click)="deleteTask(x.id)" class="btn btn-outline-danger ms-2" *ngIf="adminOps">
             Delete
           </button>
-          <button class="btn btn-outline-primary" (click)="updateStatus(x)" data-bs-toggle="modal"
+          <button class="btn btn-outline-primary" [disabled]="(x.status==='Done')" (click)="updateStatus(x)" data-bs-toggle="modal"
             data-bs-target="#myModal" *ngIf="!adminOps">
             Update Status
           </button>
@@ -131,12 +131,12 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <select [(ngModel)]="currentStatus" required>
+        <select style="width: 60%;height: 38px;" [(ngModel)]="currentStatus" required>
           <option disabled>{{ currentStatus }}</option>
           <option value="Pending">Pending</option>
           <option value="Done">Accomplished</option>
         </select>
-        <button class="btn btn-outline-info" (click)="putTaskStatus()">
+        <button class="btn btn-outline-danger ms-2" data-bs-dismiss="modal" (click)="putTaskStatus()">
           Set Status
         </button>
       </div>
