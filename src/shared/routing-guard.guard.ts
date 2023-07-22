@@ -1,3 +1,4 @@
+import { inject } from '@angular/core';
 import { CanActivateFn, Router,Route } from '@angular/router';
 
 export const routingGuardGuard: CanActivateFn = (route, state) => {

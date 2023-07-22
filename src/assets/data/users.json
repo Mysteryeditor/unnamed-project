@@ -15,9 +15,9 @@
       "email": "sri027.cvb@gmail.com",
       "password": "Srikanth@123",
       "role": "user",
-      "isLogged": false,
+      "isLogged": true,
       "id": 2,
-      "completedTaskCount": 0
+      "completedTaskCount": 2
     },
     {
       "firstName": "pallavi",
@@ -25,7 +25,7 @@
       "email": "pallavi@g",
       "password": "Pallavi@123",
       "role": "admin",
-      "isLogged": true,
+      "isLogged": false,
       "id": 3
     },
     {
@@ -37,28 +37,28 @@
       "isLogged": false,
       "id": 4,
       "completedTaskCount": 2
+    },
+    {
+      "firstName": "thangam Arul",
+      "lastName": "arulseeli",
+      "email": "seeli@gmail.com",
+      "password": "arulseeliD1$",
+      "role": "admin",
+      "isLogged": false,
+      "id": 5,
+      "completedTaskCount": 0
     }
   ],
   "session": [
     {
-      "email": "pallavi@g",
-      "role": "admin",
-      "userId": 3,
-      "firstName": "pallavi",
+      "email": "sri027.cvb@gmail.com",
+      "role": "user",
+      "userId": 2,
+      "firstName": "Srikanth",
       "id": 1
     }
   ],
   "tasks": [
-    {
-      "userid": 4,
-      "title": "CheckTaskCount",
-      "id": 1,
-      "assignedDate": "7/21/2023",
-      "dueDate": "2023-07-23",
-      "userName": "Darshan",
-      "status": "Done",
-      "assignedBy": "pallavi"
-    },
     {
       "userid": 4,
       "title": "UpdateStatusCheck",
@@ -67,6 +67,46 @@
       "dueDate": "2023-07-23",
       "userName": "Darshan",
       "status": "Done",
+      "assignedBy": "pallavi"
+    },
+    {
+      "userid": 2,
+      "title": "task assessment",
+      "id": 3,
+      "assignedDate": "7/22/2023",
+      "dueDate": "2023-07-23",
+      "userName": "Srikanth",
+      "status": "Done",
+      "assignedBy": "pallavi"
+    },
+    {
+      "userid": 4,
+      "title": "Review",
+      "id": 4,
+      "assignedDate": "7/22/2023",
+      "dueDate": "2023-07-24",
+      "userName": "Darshan",
+      "status": "Pending",
+      "assignedBy": "thangam Arul"
+    },
+    {
+      "userid": 2,
+      "title": "hello",
+      "id": 5,
+      "assignedDate": "7/22/2023",
+      "dueDate": "2023-07-23",
+      "userName": "Srikanth",
+      "status": "assigned",
+      "assignedBy": "pallavi"
+    },
+    {
+      "userid": 2,
+      "title": "Hello",
+      "id": 6,
+      "assignedDate": "7/22/2023",
+      "dueDate": "2023-07-29",
+      "userName": "Srikanth",
+      "status": "assigned",
       "assignedBy": "pallavi"
     }
   ]

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute} from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { TasksServiceService } from 'src/services/tasks-service.service';
 import { taskAssignment } from 'src/models/tasks';
 import { UsersService } from 'src/services/users.service';
@@ -58,7 +58,7 @@ export class TasksComponent implements OnInit {
     private taskservice: TasksServiceService,
     private userserv: UsersService,
     private http: HttpClient
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.userserv.getSessionInfo().subscribe((data) => {
@@ -68,10 +68,8 @@ export class TasksComponent implements OnInit {
           this.taskDetails.assignedBy = data[0].firstName;
         }
       }
-      this.todayDate=new Date().toLocaleDateString();
-      this.taskDetails.assignedDate=this.todayDate;
-     
-      console.log(this.todayDate)
+      this.todayDate = new Date().toLocaleDateString();
+      this.taskDetails.assignedDate = this.todayDate;
     });
 
     this.userId = this.actroute.snapshot.paramMap.get('id');
@@ -79,17 +77,23 @@ export class TasksComponent implements OnInit {
       this.taskData = res;
       if (res.length < 1) {
         this.noTasks = true;
-        // alert("No tasks found");
       }
     });
 
     const d = new Date();
     this.assignedDate = d.toUTCString();
 
+  }
+
+  addUserTask() {
+
     this.userserv.getUserData().subscribe((res) => {
       for (const u of res) {
         if (u.role === 'user') {
-          this.userNames.push(u.firstName);
+          if (!(this.userNames.includes(u.firstName))) {
+            this.userNames.push(u.firstName);
+          }
+
         }
       }
     });
@@ -141,27 +145,27 @@ export class TasksComponent implements OnInit {
   }
 
   putTaskStatus() {
-    
+
     Swal.fire({
-      icon:'warning',
-      title:'Are You Sure?',
-      text:'If Its Done,Its Done',
-      confirmButtonText:"Yes",
-      showCancelButton:true,
-      cancelButtonText :"No",
-      }).then((result)=>{
-        if(result.isConfirmed){
-          this.singleTaskData.status = this.currentStatus;
-          this.taskservice.putSingleTask(this.singleTaskData);
-        }       
+      icon: 'warning',
+      title: 'Are You Sure?',
+      text: 'If Its Done,Its Done',
+      confirmButtonText: "Yes",
+      showCancelButton: true,
+      cancelButtonText: "No",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.singleTaskData.status = this.currentStatus;
+        this.taskservice.putSingleTask(this.singleTaskData);
+      }
     })
-    
+
   }
 
-  adminEdit(item:taskAssignment){
-    this.taskDetails=item;
+  adminEdit(item: taskAssignment) {
+    this.taskDetails = item;
   };
-  adminEditPut(){
-    this.taskservice.putAdminUpdate(this.taskDetails,this.taskDetails.id);
+  adminEditPut() {
+    this.taskservice.putAdminUpdate(this.taskDetails, this.taskDetails.id);
   }
 }

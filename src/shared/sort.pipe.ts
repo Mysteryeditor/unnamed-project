@@ -16,8 +16,8 @@ export class SortPipe implements PipeTransform {
         multiplier = -1;
       }
       tasks.sort((a: taskAssignment, b: taskAssignment) => {
-        if (a[sortingParam] < b[sortingParam]) return 1 * multiplier;
-        else if (a[sortingParam] > b[sortingParam]) return -1 * multiplier;
+        if (a[sortingParam] < b[sortingParam]) return -1 * multiplier;
+        else if (a[sortingParam] > b[sortingParam]) return 1 * multiplier;
         else return 0;
       });
       return tasks;
